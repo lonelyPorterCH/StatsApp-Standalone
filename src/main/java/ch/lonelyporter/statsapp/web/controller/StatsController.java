@@ -1,29 +1,34 @@
 package ch.lonelyporter.statsapp.web.controller;
 
-import ch.lonelyporter.statsapp.web.model.Statistic;
+import ch.lonelyporter.statsapp.persistence.StatisticRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
-import java.util.List;
+import java.io.IOException;
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/stats")
 public class StatsController {
 
+    private final StatisticRepository repository;
+
     @GetMapping
-    public String stats(Model model) {
-        model.addAttribute("statistics", getTempStats());
+    public String stats(Model model) throws IOException {
+        model.addAttribute("statistics", repository.findAll());
         return "overview";
     }
 
-    private List<Statistic> getTempStats() {
-
-
-        return List.of(
-                new Statistic("foo", "Foo 1", "x", "y", List.of("2024-01-01", "2024-01-15"), List.of("1", "3")),
-                new Statistic("foo2", "Foo 2", "x", "y", List.of("2024-01-01", "2024-01-15"), List.of("69, 420"))
-        );
+    @ExceptionHandler(IOException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public String handleIOException(IOException e, Model model) {
+        model.addAttribute("error", e.getMessage());
+        return "error";
     }
 }
