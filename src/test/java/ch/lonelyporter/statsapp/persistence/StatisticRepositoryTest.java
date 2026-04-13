@@ -35,8 +35,10 @@ class StatisticRepositoryTest {
                 "false",
                 "Date",
                 "Price",
-                List.of("2024-01-01", "2024-01-15", "2024-02-01"),
-                List.of("100", "150", "130")
+                List.of(
+                        new Statistic.DataPoint("2024-01-01", "100"),
+                        new Statistic.DataPoint("2024-01-15", "150"),
+                        new Statistic.DataPoint("2024-02-01", "130"))
         );
 
         repository.save(statistic);
@@ -53,8 +55,10 @@ class StatisticRepositoryTest {
                 "false",
                 "Date",
                 "Price",
-                List.of("2024-01-01", "2024-01-15", "2024-02-01"),
-                List.of("100", "150", "130")
+                List.of(
+                        new Statistic.DataPoint("2024-01-01", "100"),
+                        new Statistic.DataPoint("2024-01-15", "150"),
+                        new Statistic.DataPoint("2024-02-01", "130"))
         );
 
         repository.save(original);
@@ -63,16 +67,18 @@ class StatisticRepositoryTest {
         assertThat(loaded.getId()).isEqualTo("test-chart");
         assertThat(loaded.getXAxisName()).isEqualTo("Date");
         assertThat(loaded.getYAxisName()).isEqualTo("Price");
-        assertThat(loaded.getXAxisValues()).containsExactly("2024-01-01", "2024-01-15", "2024-02-01");
-        assertThat(loaded.getYAxisValues()).containsExactly("100", "150", "130");
+        assertThat(loaded.getDataPoints()).containsExactly(
+                new Statistic.DataPoint("2024-01-01", "100"),
+                new Statistic.DataPoint("2024-01-15", "150"),
+                new Statistic.DataPoint("2024-02-01", "130"));
     }
 
     @Test
     void findAll_returnsAllSavedStatistics() throws IOException {
         repository.save(new Statistic("chart-1", "Chart 1", "false", "Date", "Price",
-                List.of("2024-01-01"), List.of("100")));
+                List.of(new Statistic.DataPoint("2024-01-01", "100"))));
         repository.save(new Statistic("chart-2", "Chart 2", "false", "Date", "Volume",
-                List.of("2024-01-01"), List.of("200")));
+                List.of(new Statistic.DataPoint("2024-01-01", "200"))));
 
         List<Statistic> all = repository.findAll();
 

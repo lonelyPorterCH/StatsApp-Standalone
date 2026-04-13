@@ -1,23 +1,36 @@
 package ch.lonelyporter.statsapp.web.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Statistic {
-
     private String id;
     private String title;
     private String reverse;
     private String xAxisName;
     private String yAxisName;
-    private List<String> xAxisValues;
-    private List<String> yAxisValues;
+    private List<DataPoint> dataPoints;
+
+    public String getDataPointsJson() {
+        return dataPoints.stream()
+                .map(dp -> "{\"x\":\"" + dp.getX() + "\",\"y\":\"" + dp.getY() + "\"}")
+                .collect(Collectors.joining(",", "[", "]"));
+    }
+
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @EqualsAndHashCode
+    @ToString
+    public static class DataPoint {
+        private String x;
+        private String y;
+    }
 }

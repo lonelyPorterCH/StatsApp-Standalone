@@ -2,12 +2,13 @@
     See also: https://www.chartjs.org/docs/latest/samples/scales/time-line.html
  */
 document.querySelectorAll('.line-chart').forEach(canvas => {
-    const xValues = canvas.dataset.xValues.split(',');
-    const yValues = canvas.dataset.yValues.split(',');
+    const dataPoints = JSON.parse(canvas.dataset.points).map(dp => ({
+        x: new Date(dp.x),
+        y: parseFloat(dp.y)
+    }));
 
     //Data
     const data = {
-        labels: xValues,
         datasets: [{
             label: canvas.dataset.yAxisName,
             fill: false,
@@ -16,9 +17,9 @@ document.querySelectorAll('.line-chart').forEach(canvas => {
             borderColor: "rgb(0 119 255 / 0.75)",
             borderWidth: 2,
             pointRadius: 2,
-            data: yValues
+            data: dataPoints
         }]
-    }
+    };
 
     new Chart(canvas, {
         type: 'line',
