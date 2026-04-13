@@ -6,6 +6,7 @@ document.querySelectorAll('.line-chart').forEach(canvas => {
         x: new Date(dp.x),
         y: parseFloat(dp.y)
     }));
+    const reverse = canvas.dataset.reverse === 'true';
 
     //Data
     const data = {
@@ -21,6 +22,7 @@ document.querySelectorAll('.line-chart').forEach(canvas => {
         }]
     };
 
+
     new Chart(canvas, {
         type: 'line',
         data: data,
@@ -35,6 +37,10 @@ document.querySelectorAll('.line-chart').forEach(canvas => {
             scales: {
                 x: {
                     type: 'time',
+                    ticks: {
+                        //Decrease number of labels
+                        maxTicksLimit: 8
+                    },
                     time: {
                         // Luxon format string
                         tooltipFormat: "DD"
@@ -45,7 +51,7 @@ document.querySelectorAll('.line-chart').forEach(canvas => {
                     }
                 },
                 y: {
-                    reverse: canvas.dataset.reverse === 'true',
+                    reverse: reverse,
                     title: {
                         display: true,
                         text: canvas.dataset.yAxisName
