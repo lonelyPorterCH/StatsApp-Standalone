@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public class Statistic {
     private String id;
     private String title;
-    private String reverse;
+    private boolean reverse;
     private String xAxisName;
     private String yAxisName;
     private List<DataPoint> dataPoints;

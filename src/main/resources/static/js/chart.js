@@ -26,7 +26,6 @@ document.querySelectorAll('.line-chart').forEach(canvas => {
         data: data,
         options: {
             plugins: {
-                //Title
                 title: {
                     display: true,
                     text: canvas.dataset.title,
@@ -46,7 +45,7 @@ document.querySelectorAll('.line-chart').forEach(canvas => {
                     }
                 },
                 y: {
-                    reverse: canvas.dataset.reverse,
+                    reverse: canvas.dataset.reverse === 'true',
                     title: {
                         display: true,
                         text: canvas.dataset.yAxisName

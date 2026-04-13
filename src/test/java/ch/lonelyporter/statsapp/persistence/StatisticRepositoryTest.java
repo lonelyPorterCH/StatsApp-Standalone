@@ -32,7 +32,7 @@ class StatisticRepositoryTest {
         Statistic statistic = new Statistic(
                 "test-chart",
                 "My Chart",
-                "false",
+                false,
                 "Date",
                 "Price",
                 List.of(
@@ -52,7 +52,7 @@ class StatisticRepositoryTest {
         Statistic original = new Statistic(
                 "test-chart",
                 "My Chart",
-                "false",
+                false,
                 "Date",
                 "Price",
                 List.of(
@@ -75,9 +75,9 @@ class StatisticRepositoryTest {
 
     @Test
     void findAll_returnsAllSavedStatistics() throws IOException {
-        repository.save(new Statistic("chart-1", "Chart 1", "false", "Date", "Price",
+        repository.save(new Statistic("chart-1", "Chart 1", false, "Date", "Price",
                 List.of(new Statistic.DataPoint("2024-01-01", "100"))));
-        repository.save(new Statistic("chart-2", "Chart 2", "false", "Date", "Volume",
+        repository.save(new Statistic("chart-2", "Chart 2", false, "Date", "Volume",
                 List.of(new Statistic.DataPoint("2024-01-01", "200"))));
 
         List<Statistic> all = repository.findAll();

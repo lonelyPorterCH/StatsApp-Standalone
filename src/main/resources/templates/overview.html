@@ -24,13 +24,18 @@
 
 <div class="chart-grid">
     <div class="chart-card" th:each="statistic : ${statistics}">
+
+        <!--/*
+            All data-* attributes  will be converted to dataset attributes on the canvas, which can later be
+            accessed with the camel case name. For example: data-x-axis-name will become canvas.dataset.xAxisName
+        */-->
         <canvas
                 th:id="${statistic.id}"
                 th:data-title="${statistic.title}"
                 th:data-x-axis-name="${statistic.xAxisName}"
                 th:data-y-axis-name="${statistic.yAxisName}"
                 th:data-points="${statistic.dataPointsJson}"
-                th:reverse="${statistic.reverse}"
+                th:data-reverse="${statistic.reverse}"
                 class="line-chart">
         </canvas>
     </div>
