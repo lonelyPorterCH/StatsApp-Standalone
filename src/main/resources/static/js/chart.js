@@ -2,22 +2,25 @@ document.querySelectorAll('.line-chart').forEach(canvas => {
     const xValues = canvas.dataset.xValues.split(',');
     const yValues = canvas.dataset.yValues.split(',');
 
+    //Data
+    const data = {
+        labels: xValues,
+        datasets: [{
+            label: canvas.dataset.title,
+            fill: false,
+            tension: 0,
+            backgroundColor: "rgba(0,0,255,0.5)",
+            borderColor: "rgba(0,0,255,1.0)",
+            data: yValues
+        }]
+    }
+
     new Chart(canvas, {
-        type: "line",
-        data: {
-            labels: xValues,
-            datasets: [{
-                fill: false,
-                lineTension: 0,
-                backgroundColor: "rgba(0,0,255,1.0)",
-                borderColor: "rgba(0,0,255,0.1)",
-                data: yValues,
-                label: canvas.dataset.title
-            }]
-        },
+        type: 'line',
+        data: data,
         options: {
             plugins: {
-                legend: {display: true},
+                //Title
                 title: {
                     display: true,
                     text: canvas.dataset.title,
@@ -26,13 +29,10 @@ document.querySelectorAll('.line-chart').forEach(canvas => {
             },
             scales: {
                 x: {
-                    type: "time",
+                    type: 'time',
                     time: {
-                        unit: "day",
-                        tooltipFormat: "dd MMM yyyy",
-                        displayFormats: {
-                            day: "dd MMM"
-                        }
+                        // Luxon format string
+                        tooltipFormat: "DD T"
                     },
                     title: {
                         display: true,

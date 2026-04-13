@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title>Stats App</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1"></script>
 </head>
 <body>
 <header>Stats</header>
@@ -21,41 +22,7 @@
             style="width:100%;max-width:700px">
     </canvas>
 </div>
-
-<script>
-    document.querySelectorAll('.line-chart').forEach(canvas => {
-        const xValues = canvas.dataset.xValues.split(',');
-        const yValues = canvas.dataset.yValues.split(',');
-
-        new Chart(canvas, {
-            type: "line",
-            data: {
-                labels: xValues,
-                datasets: [{
-                    fill: false,
-                    lineTension: 0,
-                    backgroundColor: "rgba(0,0,255,1.0)",
-                    borderColor: "rgba(0,0,255,0.1)",
-                    data: yValues
-                }]
-            },
-            options: {
-                plugins: {
-                    legend: { display: false },
-                    title: {
-                        display: true,
-                        text: canvas.dataset.title,
-                        font: { size: 16 }
-                    }
-                },
-                scales: {
-                    x: { title: { display: true } },
-                    y: { title: { display: true } }
-                }
-            }
-        });
-    });
-</script>
+<script src="/js/chart.js"></script>
 
 </body>
 </html>
