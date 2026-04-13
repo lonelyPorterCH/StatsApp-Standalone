@@ -12,8 +12,8 @@ document.querySelectorAll('.line-chart').forEach(canvas => {
             label: canvas.dataset.yAxisName,
             fill: false,
             tension: 0,
-            backgroundColor: "rgb(227 76 76 / 0.8)",
-            borderColor: "rgb(255 0 0 / 0.75)",
+            backgroundColor: "rgb(95 139 227 / 0.8)",
+            borderColor: "rgb(0 119 255 / 0.75)",
             borderWidth: 2,
             pointRadius: 2,
             data: yValues

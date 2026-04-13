@@ -8,9 +8,19 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1"></script>
 
     <link rel="stylesheet" href="/css/styles.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-<header>Stats</header>
+
+<!-- /* See also: https://materializecss.com/navbar.html */ -->
+<nav>
+    <div class="nav-wrapper blue darken-2">
+        <a class="brand-logo left" style="padding-left:16px">
+            <i class="material-icons">show_chart</i> Stats App
+        </a>
+    </div>
+</nav>
 
 <div class="chart-grid">
     <div class="chart-card" th:each="statistic : ${statistics}">
