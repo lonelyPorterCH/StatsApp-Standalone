@@ -37,7 +37,7 @@ document.querySelectorAll('.line-chart').forEach(canvas => {
                     type: 'time',
                     time: {
                         // Luxon format string
-                        tooltipFormat: "DD T"
+                        tooltipFormat: "DD"
                     },
                     title: {
                         display: true,
