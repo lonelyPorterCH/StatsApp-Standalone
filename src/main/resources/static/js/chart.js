@@ -1,3 +1,6 @@
+/*
+    See also: https://www.chartjs.org/docs/latest/samples/scales/time-line.html
+ */
 document.querySelectorAll('.line-chart').forEach(canvas => {
     const xValues = canvas.dataset.xValues.split(',');
     const yValues = canvas.dataset.yValues.split(',');

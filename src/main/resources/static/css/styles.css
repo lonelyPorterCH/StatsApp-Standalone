@@ -1,0 +1,17 @@
+.chart-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 24px;
+}
+
+.chart-card {
+    /*grow, shrink, base width of 600px*/
+    flex: 1 1 600px;
+
+    /* don't shrink below this */
+    min-width: 300px;
+
+    /* don't grow beyond this */
+    max-width: 800px;
+}
