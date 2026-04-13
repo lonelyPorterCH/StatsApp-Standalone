@@ -6,11 +6,13 @@ document.querySelectorAll('.line-chart').forEach(canvas => {
     const data = {
         labels: xValues,
         datasets: [{
-            label: canvas.dataset.title,
+            label: canvas.dataset.yAxisName,
             fill: false,
             tension: 0,
-            backgroundColor: "rgba(0,0,255,0.5)",
-            borderColor: "rgba(0,0,255,1.0)",
+            backgroundColor: "rgb(227 76 76 / 0.8)",
+            borderColor: "rgb(255 0 0 / 0.75)",
+            borderWidth: 2,
+            pointRadius: 2,
             data: yValues
         }]
     }
