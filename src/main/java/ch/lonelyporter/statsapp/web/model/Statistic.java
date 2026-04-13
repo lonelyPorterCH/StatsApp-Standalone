@@ -15,6 +15,7 @@ public class Statistic {
 
     private String id;
     private String title;
+    private String reverse;
     private String xAxisName;
     private String yAxisName;
     private List<String> xAxisValues;

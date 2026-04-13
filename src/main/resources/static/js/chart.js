@@ -42,6 +42,7 @@ document.querySelectorAll('.line-chart').forEach(canvas => {
                     }
                 },
                 y: {
+                    reverse: canvas.dataset.reverse,
                     title: {
                         display: true,
                         text: canvas.dataset.yAxisName
