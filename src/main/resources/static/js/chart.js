@@ -17,15 +17,23 @@ document.querySelectorAll('.line-chart').forEach(canvas => {
         },
         options: {
             plugins: {
-                legend: { display: true },
+                legend: {display: true},
                 title: {
                     display: true,
                     text: canvas.dataset.title,
-                    font: { size: 16 }
+                    font: {size: 16}
                 }
             },
             scales: {
                 x: {
+                    type: "time",
+                    time: {
+                        unit: "day",
+                        tooltipFormat: "dd MMM yyyy",
+                        displayFormats: {
+                            day: "dd MMM"
+                        }
+                    },
                     title: {
                         display: true,
                         text: canvas.dataset.xAxisName
