@@ -38,6 +38,20 @@
                 th:data-reverse="${statistic.reverse}"
                 class="line-chart">
         </canvas>
+
+        <button class="add-btn">
+            <i class="material-icons">add</i>
+        </button>
+
+        <div class="add-form">
+            <label th:for="${statistic.id} + '-x'" th:text="${statistic.xAxisName}"></label>
+            <input type="date" th:id="${statistic.id} + '-x'" class="input-x"/>
+
+            <label th:for="${statistic.id} + '-y'" th:text="${statistic.yAxisName}"></label>
+            <input type="number" th:id="${statistic.id} + '-y'" class="input-y" placeholder="Value"/>
+
+            <button class="submit-btn">Add</button>
+        </div>
     </div>
 </div>
 <script src="/js/chart.js"></script>

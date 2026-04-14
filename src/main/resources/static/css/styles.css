@@ -15,10 +15,44 @@
     /* don't grow beyond this */
     max-width: 800px;
 
+    position: relative;
     padding: 25px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .chart-card:hover {
     box-shadow: 0 9px 15px rgba(0, 124, 255, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.add-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    opacity: 0; /* hidden by default */
+    transition: opacity 0.2s ease;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chart-card:hover .add-btn {
+    opacity: 1; /* show on hover */
+}
+
+.add-form {
+    display: none; /* hidden by default */
+    gap: 8px;
+    padding: 12px;
+    align-items: center;
+}
+
+.add-form.visible {
+    display: flex;
 }

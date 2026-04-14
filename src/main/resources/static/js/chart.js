@@ -61,3 +61,34 @@ document.querySelectorAll('.line-chart').forEach(canvas => {
         }
     });
 });
+
+document.querySelectorAll('.chart-card').forEach(card => {
+    const addBtn = card.querySelector('.add-btn');
+    const form = card.querySelector('.add-form');
+    const submitBtn = card.querySelector('.submit-btn');
+    const canvas = card.querySelector('.line-chart');
+
+    // toggle form on + click
+    addBtn.addEventListener('click', () => {
+        form.classList.toggle('visible');
+    });
+
+    // submit new data point
+    submitBtn.addEventListener('click', () => {
+        const x = card.querySelector('.input-x').value;
+        const y = card.querySelector('.input-y').value;
+
+        if (!x || !y) return;
+
+        fetch(`/stats/${canvas.id}/datapoint`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({x, y})
+        }).then(res => {
+            if (res.ok) {
+                form.classList.remove('visible');
+                location.reload();   // simplest way to refresh the chart
+            }
+        });
+    });
+});

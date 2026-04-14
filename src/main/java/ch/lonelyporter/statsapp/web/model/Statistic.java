@@ -1,5 +1,6 @@
 package ch.lonelyporter.statsapp.web.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import java.util.List;
@@ -17,6 +18,7 @@ public class Statistic {
     private String yAxisName;
     private List<DataPoint> dataPoints;
 
+    @JsonIgnore
     public String getDataPointsJson() {
         return dataPoints.stream()
                 .map(dp -> "{\"x\":\"" + dp.getX() + "\",\"y\":\"" + dp.getY() + "\"}")
