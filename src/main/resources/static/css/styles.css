@@ -25,21 +25,7 @@
 }
 
 .add-btn {
-    position: absolute;
-    top: 8px;
-    right: 8px;
     opacity: 0; /* hidden by default */
-    transition: opacity 0.2s ease;
-    background-color: #1976d2;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .chart-card:hover .add-btn {

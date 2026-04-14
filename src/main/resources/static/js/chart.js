@@ -68,9 +68,10 @@ document.querySelectorAll('.chart-card').forEach(card => {
     const submitBtn = card.querySelector('.submit-btn');
     const canvas = card.querySelector('.line-chart');
 
-    // toggle form on + click
+    // toggle form on + click and hide itself
     addBtn.addEventListener('click', () => {
         form.classList.toggle('visible');
+        addBtn.style.display = 'none';
     });
 
     // submit new data point
@@ -87,6 +88,7 @@ document.querySelectorAll('.chart-card').forEach(card => {
         }).then(res => {
             if (res.ok) {
                 form.classList.remove('visible');
+                addBtn.style.display = '';   // restore button
                 location.reload();   // simplest way to refresh the chart
             }
         });

@@ -39,9 +39,9 @@
                 class="line-chart">
         </canvas>
 
-        <button class="add-btn">
+        <a class="btn-floating btn-small blue add-btn">
             <i class="material-icons">add</i>
-        </button>
+        </a>
 
         <div class="add-form">
             <label th:for="${statistic.id} + '-x'" th:text="${statistic.xAxisName}"></label>
@@ -50,7 +50,7 @@
             <label th:for="${statistic.id} + '-y'" th:text="${statistic.yAxisName}"></label>
             <input type="number" th:id="${statistic.id} + '-y'" class="input-y" placeholder="Value"/>
 
-            <button class="submit-btn">Add</button>
+            <a class="btn blue submit-btn">Add</a>
         </div>
     </div>
 </div>
