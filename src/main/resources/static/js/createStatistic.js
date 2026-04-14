@@ -1,3 +1,6 @@
+/**
+ * When the create button is pressed, collect all data and post it to /stats
+ */
 document.getElementById('create-btn').addEventListener('click', () => {
     const payload = {
         id: document.getElementById('new-id').value,

@@ -1,5 +1,7 @@
-/*
-    See also: https://www.chartjs.org/docs/latest/samples/scales/time-line.html
+/**
+ * Renders a line-chart with a timescale for each canvas in the DOM.
+ *
+ * See also: https://www.chartjs.org/docs/latest/samples/scales/time-line.html
  */
 document.querySelectorAll('.line-chart').forEach(canvas => {
     const dataPoints = JSON.parse(canvas.dataset.points).map(dp => ({
@@ -59,38 +61,5 @@ document.querySelectorAll('.line-chart').forEach(canvas => {
                 }
             }
         }
-    });
-});
-
-document.querySelectorAll('.chart-card').forEach(card => {
-    const addBtn = card.querySelector('.add-btn');
-    const form = card.querySelector('.add-form');
-    const submitBtn = card.querySelector('.submit-btn');
-    const canvas = card.querySelector('.line-chart');
-
-    // toggle form on + click and hide itself
-    addBtn.addEventListener('click', () => {
-        form.classList.toggle('visible');
-        addBtn.style.display = 'none';
-    });
-
-    // submit new data point
-    submitBtn.addEventListener('click', () => {
-        const x = card.querySelector('.input-x').value;
-        const y = card.querySelector('.input-y').value;
-
-        if (!x || !y) return;
-
-        fetch(`/stats/${canvas.id}/datapoint`, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({x, y})
-        }).then(res => {
-            if (res.ok) {
-                form.classList.remove('visible');
-                addBtn.style.display = '';   // restore button
-                location.reload();   // simplest way to refresh the chart
-            }
-        });
     });
 });
