@@ -14,4 +14,11 @@
 
     /* don't grow beyond this */
     max-width: 800px;
+
+    padding: 25px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.chart-card:hover {
+    box-shadow: 0 9px 15px rgba(0, 124, 255, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
