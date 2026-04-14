@@ -34,6 +34,14 @@ public class StatsController {
         return ResponseEntity.ok().build();
     }
 
+    @PostMapping
+    @ResponseBody
+    public ResponseEntity<Void> createStatistic(@RequestBody Statistic statistic) throws IOException {
+        System.out.println(statistic);
+        repository.save(statistic);
+        return ResponseEntity.ok().build();
+    }
+
     @ExceptionHandler(IOException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public String handleIOException(IOException e, Model model) {

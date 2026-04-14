@@ -53,8 +53,51 @@
             <a class="btn blue submit-btn">Add</a>
         </div>
     </div>
+
+    <!-- new statistic card -->
+    <div class="chart-card new-statistic-card">
+        <h5>New Statistic</h5>
+
+        <div class="input-field">
+            <input type="text" id="new-id"/>
+            <label for="new-id">ID</label>
+        </div>
+        <div class="input-field">
+            <input type="text" id="new-title"/>
+            <label for="new-title">Title</label>
+        </div>
+        <div class="input-field">
+            <input type="text" id="new-x-axis-name"/>
+            <label for="new-x-axis-name">X Axis Name</label>
+        </div>
+        <div class="input-field">
+            <input type="text" id="new-y-axis-name"/>
+            <label for="new-y-axis-name">Y Axis Name</label>
+        </div>
+
+        <label>
+            <input type="checkbox" id="new-reverse"/>
+            <span>Reverse (lower = better)</span>
+        </label>
+
+        <h6>First Data Point</h6>
+        <div class="input-field">
+            <input type="date" id="new-point-x"/>
+            <label for="new-point-x">Date</label>
+        </div>
+        <div class="input-field">
+            <input type="number" id="new-point-y"/>
+            <label for="new-point-y">Value</label>
+        </div>
+
+        <a class="btn blue create-btn" id="create-btn">
+            <i class="material-icons left">add</i>Create
+        </a>
+    </div>
 </div>
+
 <script src="/js/chart.js"></script>
+<script src="/js/createStatistic.js"></script>
 
 </body>
 </html>
