@@ -24,10 +24,9 @@
     box-shadow: 0 9px 15px rgba(0, 124, 255, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
-.new-statistic-card {
-    display: flex;
-    flex-direction: column;
-}
+/* * * * * * *
+ * Add Form
+ * * * * * * */
 
 .add-btn {
     opacity: 0; /* hidden by default */
@@ -46,4 +45,23 @@
 
 .add-form.visible {
     display: flex;
+}
+
+/* * * * * * * *
+ * Create Form
+ * * * * * * * */
+
+.new-statistic-card {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    max-height: 800px;
+    box-sizing: border-box;
+}
+
+/* Create 2 fractions for the form contents (50% each) */
+.new-statistic-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 16px;
 }

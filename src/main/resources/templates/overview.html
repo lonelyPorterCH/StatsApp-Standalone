@@ -58,39 +58,43 @@
     <div class="chart-card new-statistic-card">
         <h5>New Statistic</h5>
 
-        <div class="input-field">
-            <input type="text" id="new-id"/>
-            <label for="new-id">ID</label>
-        </div>
-        <div class="input-field">
-            <input type="text" id="new-title"/>
-            <label for="new-title">Title</label>
-        </div>
-        <div class="input-field">
-            <input type="text" id="new-x-axis-name"/>
-            <label for="new-x-axis-name">X Axis Name</label>
-        </div>
-        <div class="input-field">
-            <input type="text" id="new-y-axis-name"/>
-            <label for="new-y-axis-name">Y Axis Name</label>
+        <div class="new-statistic-form">
+            <div class="input-field">
+                <input type="text" id="new-id"/>
+                <label for="new-id">ID</label>
+            </div>
+            <div class="input-field">
+                <input type="text" id="new-title"/>
+                <label for="new-title">Title</label>
+            </div>
+            <div class="input-field">
+                <input type="text" id="new-x-axis-name"/>
+                <label for="new-x-axis-name">X Axis Name</label>
+            </div>
+            <div class="input-field">
+                <input type="text" id="new-y-axis-name"/>
+                <label for="new-y-axis-name">Y Axis Name</label>
+            </div>
         </div>
 
         <label>
-            <input type="checkbox" id="new-reverse"/>
-            <span>Reverse (lower = better)</span>
+            <input type="checkbox" id="new-inverted"/>
+            <span>Reversed (lower = better)</span>
         </label>
 
         <h6>First Data Point</h6>
-        <div class="input-field">
-            <input type="date" id="new-point-x"/>
-            <label for="new-point-x">Date</label>
-        </div>
-        <div class="input-field">
-            <input type="number" id="new-point-y"/>
-            <label for="new-point-y">Value</label>
+        <div class="new-statistic-form">
+            <div class="input-field">
+                <input type="date" id="new-point-x"/>
+                <label for="new-point-x">Date</label>
+            </div>
+            <div class="input-field">
+                <input type="number" id="new-point-y"/>
+                <label for="new-point-y">Value</label>
+            </div>
         </div>
 
-        <a class="btn blue create-btn" id="create-btn">
+        <a class="btn blue" id="create-btn">
             <i class="material-icons left">add</i>Create
         </a>
     </div>
