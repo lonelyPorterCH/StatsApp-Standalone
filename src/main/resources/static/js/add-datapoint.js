@@ -25,7 +25,7 @@ document.querySelectorAll('.chart-card').forEach(card => {
 
             if (!x || !y) return;
 
-            fetch(`/stats/${canvas.id}/datapoint`, {
+            fetch(`api/stats/${canvas.id}/datapoint`, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({x, y})

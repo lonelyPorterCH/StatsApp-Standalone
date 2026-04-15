@@ -18,7 +18,7 @@ document.getElementById('create-btn').addEventListener('click', () => {
 
     console.log(JSON.stringify(payload));
 
-    fetch('/stats', {
+    fetch('api/stats', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(payload)

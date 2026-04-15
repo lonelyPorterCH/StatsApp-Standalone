@@ -1,13 +1,14 @@
 package ch.lonelyporter.statsapp.web.controller;
 
 import ch.lonelyporter.statsapp.persistence.StatisticRepository;
-import ch.lonelyporter.statsapp.web.model.Statistic;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.io.IOException;
 
@@ -22,24 +23,6 @@ public class StatsController {
     public String stats(Model model) throws IOException {
         model.addAttribute("statistics", repository.findAll());
         return "overview";
-    }
-
-    @PostMapping("/{id}/datapoint")
-    @ResponseBody
-    public ResponseEntity<Void> addDataPoint(@PathVariable String id,
-                                             @RequestBody Statistic.DataPoint dataPoint) throws IOException {
-        Statistic statistic = repository.findById(id);
-        statistic.getDataPoints().add(dataPoint);
-        repository.save(statistic);
-        return ResponseEntity.ok().build();
-    }
-
-    @PostMapping
-    @ResponseBody
-    public ResponseEntity<Void> createStatistic(@RequestBody Statistic statistic) throws IOException {
-        System.out.println(statistic);
-        repository.save(statistic);
-        return ResponseEntity.ok().build();
     }
 
     @ExceptionHandler(IOException.class)
