@@ -1,4 +1,4 @@
-package ch.lonelyporter.statsapp.web.controller;
+package ch.lonelyporter.statsapp.web.api;
 
 import ch.lonelyporter.statsapp.persistence.StatisticRepository;
 import ch.lonelyporter.statsapp.web.model.Statistic;
@@ -11,7 +11,7 @@ import java.io.IOException;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/stats")
-public class StatsRestController {
+public class StatsApiController {
 
     private final StatisticRepository repository;
 
