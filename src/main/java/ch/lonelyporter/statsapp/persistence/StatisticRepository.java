@@ -1,6 +1,7 @@
 package ch.lonelyporter.statsapp.persistence;
 
 import ch.lonelyporter.statsapp.StorageProperties;
+import ch.lonelyporter.statsapp.exception.StatisticStorageException;
 import ch.lonelyporter.statsapp.web.model.Statistic;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -20,12 +21,16 @@ public class StatisticRepository {
     private final StorageProperties storageProperties;
     private final ObjectMapper objectMapper;
 
-    public void save(Statistic statistic) throws IOException {
-        Path folder = Paths.get(storageProperties.getStoragePath());
-        Files.createDirectories(folder);
+    public void save(Statistic statistic) {
+        try {
+            Path folder = Paths.get(storageProperties.getStoragePath());
+            Files.createDirectories(folder);
 
-        Path file = folder.resolve(statistic.getId() + ".json");
-        objectMapper.writeValue(file.toFile(), statistic);
+            Path file = folder.resolve(statistic.getId() + ".json");
+            objectMapper.writeValue(file.toFile(), statistic);
+        } catch (IOException e) {
+            throw new StatisticStorageException("Failed to save statistic: " + statistic.getId(), e);
+        }
     }
 
     public Statistic findById(String id) {
@@ -33,15 +38,21 @@ public class StatisticRepository {
         return objectMapper.readValue(file.toFile(), Statistic.class);
     }
 
-    public List<Statistic> findAll() throws IOException {
+    public List<Statistic> findAll() {
         Path folder = Paths.get(storageProperties.getStoragePath());
-        Files.createDirectories(folder);
+        try {
+            Files.createDirectories(folder);
+        } catch (IOException e) {
+            throw new StatisticStorageException("Failed create statistics Folder", e);
+        }
 
         try (Stream<Path> files = Files.list(folder)) {
             return files
                     .filter(p -> p.toString().endsWith(".json"))
                     .map(p -> objectMapper.readValue(p.toFile(), Statistic.class))
                     .toList();
+        } catch (IOException e) {
+            throw new StatisticStorageException("Failed to find statistics", e);
         }
     }
 }
