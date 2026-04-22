@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import tools.jackson.databind.ObjectMapper;
 
-import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 
@@ -28,7 +27,7 @@ class StatisticRepositoryTest {
     }
 
     @Test
-    void save_writesJsonFile() throws IOException {
+    void save_writesJsonFile() {
         Statistic statistic = new Statistic(
                 "test-chart",
                 "My Chart",
@@ -48,7 +47,7 @@ class StatisticRepositoryTest {
     }
 
     @Test
-    void save_thenFindById_returnsEquivalentStatistic() throws IOException {
+    void save_thenFindById_returnsEquivalentStatistic() {
         Statistic original = new Statistic(
                 "test-chart",
                 "My Chart",
@@ -74,7 +73,7 @@ class StatisticRepositoryTest {
     }
 
     @Test
-    void findAll_returnsAllSavedStatistics() throws IOException {
+    void findAll_returnsAllSavedStatistics() {
         repository.save(new Statistic("chart-1", "Chart 1", false, "Date", "Price",
                 List.of(new Statistic.DataPoint("2024-01-01", "100"))));
         repository.save(new Statistic("chart-2", "Chart 2", false, "Date", "Volume",
@@ -88,7 +87,7 @@ class StatisticRepositoryTest {
     }
 
     @Test
-    void findAll_onEmptyFolder_returnsEmptyList() throws IOException {
+    void findAll_onEmptyFolder_returnsEmptyList() {
         List<Statistic> all = repository.findAll();
 
         assertThat(all).isEmpty();
